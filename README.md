@@ -1,6 +1,6 @@
 # Portfolio Hub
 
-Olá! Eu sou **[SEU NOME]**, estudante de **[SEU CURSO/BOOTCAMP]**. Este repositório reúne projetos acadêmicos e pessoais que demonstram meu aprendizado, minhas práticas de desenvolvimento e minha evolução.
+Olá! Eu sou **Arthur Morelo**, estudante de **Engenharia de software**. Este repositório reúne projetos acadêmicos e pessoais que demonstram meu aprendizado, minhas práticas de desenvolvimento e minha evolução.
 
 ## Objetivo
 
