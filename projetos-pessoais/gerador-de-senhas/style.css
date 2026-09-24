@@ -1,0 +1,442 @@
+/* 1. Cores e configurações do tema escuro (padrão) */
+:root {
+  color-scheme: dark;
+  --color-page: #10131b;
+  --color-card: #1b202c;
+  --color-surface: #252c3b;
+  --color-text: #f3f5fb;
+  --color-muted: #a8b0c2;
+  --color-border: #3a4355;
+  --color-accent: #a99bff;
+  --color-accent-strong: #8a78ff;
+  --color-on-accent: #17132b;
+  --color-focus: #8bd8ff;
+  --color-weak: #ff6b70;
+  --color-medium: #f4c95d;
+  --color-strong: #55d69e;
+  --color-very-strong: #63b8ff;
+  --shadow-card: 0 1.25rem 3.5rem rgb(0 0 0 / 28%);
+}
+
+/* Tema claro conforme a preferência do sistema */
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --color-page: #f3f5fa;
+    --color-card: #fff;
+    --color-surface: #f5f6fb;
+    --color-text: #202536;
+    --color-muted: #626b7d;
+    --color-border: #d7dce7;
+    --color-accent: #5745d6;
+    --color-accent-strong: #4634c4;
+    --color-on-accent: #fff;
+    --color-focus: #245fc4;
+    --color-weak: #c8323d;
+    --color-medium: #9a6a00;
+    --color-strong: #16784d;
+    --color-very-strong: #1767b1;
+    --shadow-card: 0 1.25rem 3.5rem rgb(35 47 75 / 12%);
+  }
+}
+
+/* 2. Base e estrutura da página */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: var(--color-page);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-text);
+  background: var(--color-page);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+.site-header,
+.password-generator,
+.site-footer {
+  width: min(100%, 34rem);
+}
+
+.site-header {
+  margin: 0 auto 1.5rem;
+  text-align: center;
+}
+
+.site-header h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.75rem, 7vw, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+
+.site-header p {
+  max-width: 32rem;
+  margin: 0 auto;
+  color: var(--color-muted);
+  font-size: 0.98rem;
+}
+
+/* 3. Cartão, campos e opções */
+.password-generator {
+  padding: clamp(1.15rem, 5vw, 2rem);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  background: var(--color-card);
+  box-shadow: var(--shadow-card);
+}
+
+.generator-form {
+  display: grid;
+  gap: 1.35rem;
+}
+
+.generator-form > h2,
+.password-strength h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.password-output,
+.password-length {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.password-output > label,
+.password-length > label,
+.character-options legend {
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.password-output__controls {
+  display: flex;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.password-output__field {
+  min-width: 0;
+  flex: 1;
+  padding: 0.8rem 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.7rem;
+  color: var(--color-text);
+  background: var(--color-surface);
+  font: 600 0.95rem/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.password-output__field::placeholder {
+  color: var(--color-muted);
+  font: 400 0.85rem/1.4 Inter, ui-sans-serif, system-ui, sans-serif;
+  opacity: 0.8;
+}
+
+.password-output__field:read-only {
+  cursor: text;
+}
+
+#password-length-value {
+  display: inline-block;
+  min-width: 1.5em;
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+/* 4. Range e checkboxes */
+#password-length {
+  width: 100%;
+  height: 1.5rem;
+  margin: 0;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+#password-length::-webkit-slider-runnable-track {
+  height: 0.4rem;
+  border-radius: 99px;
+  background: var(--color-border);
+}
+
+#password-length::-moz-range-track {
+  height: 0.4rem;
+  border-radius: 99px;
+  background: var(--color-border);
+}
+
+#password-length::-webkit-slider-thumb {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: -0.375rem;
+  appearance: none;
+  border: 3px solid var(--color-card);
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent);
+}
+
+#password-length::-moz-range-thumb {
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 3px solid var(--color-card);
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent);
+}
+
+.character-options {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.7rem;
+  border: 0;
+}
+
+.character-options legend {
+  margin-bottom: 0.75rem;
+  padding: 0;
+}
+
+.character-options__item {
+  min-height: 2.75rem;
+  padding: 0.55rem 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.7rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 140ms ease, background-color 140ms ease;
+}
+
+.character-options__item:hover {
+  border-color: var(--color-accent);
+}
+
+.character-options__item input {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: 0 0 auto;
+  margin: 0;
+  appearance: none;
+  display: grid;
+  place-content: center;
+  border: 1px solid var(--color-muted);
+  border-radius: 0.3rem;
+  background: var(--color-card);
+  cursor: pointer;
+}
+
+.character-options__item input::before {
+  width: 0.58rem;
+  height: 0.34rem;
+  content: "";
+  transform: rotate(-45deg) scale(0);
+  border-bottom: 2px solid var(--color-on-accent);
+  border-left: 2px solid var(--color-on-accent);
+  transition: transform 120ms ease;
+}
+
+.character-options__item input:checked {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+}
+
+.character-options__item input:checked::before {
+  transform: rotate(-45deg) scale(1);
+}
+
+/* 5. Botões e estados interativos */
+.button {
+  min-height: 2.9rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.7rem;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 140ms ease, background-color 140ms ease, border-color 140ms ease, opacity 140ms ease;
+}
+
+.button--primary {
+  width: 100%;
+  color: var(--color-on-accent);
+  background: var(--color-accent);
+}
+
+.button--secondary {
+  flex: 0 0 auto;
+  color: var(--color-text);
+  border-color: var(--color-border);
+  background: var(--color-surface);
+}
+
+.button--primary:hover {
+  background: var(--color-accent-strong);
+  transform: translateY(-1px);
+}
+
+.button--secondary:hover {
+  border-color: var(--color-accent);
+  background: var(--color-card);
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* 6. Indicador de força e mensagens */
+.password-strength {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.password-strength__bar {
+  width: 100%;
+  height: 0.65rem;
+  overflow: hidden;
+  appearance: none;
+  border: 0;
+  border-radius: 99px;
+  background: var(--color-surface);
+}
+
+.password-strength__bar::-webkit-progress-bar {
+  border-radius: 99px;
+  background: var(--color-surface);
+}
+
+.password-strength__bar::-webkit-progress-value {
+  border-radius: 99px;
+  background: var(--color-muted);
+  transition: width 220ms ease, background-color 220ms ease;
+}
+
+.password-strength__bar::-moz-progress-bar {
+  border-radius: 99px;
+  background: var(--color-muted);
+  transition: background-color 220ms ease;
+}
+
+.password-strength__bar.fraca::-webkit-progress-value,
+.password-strength__bar.fraca::-moz-progress-bar {
+  background: var(--color-weak);
+}
+
+.password-strength__bar.media::-webkit-progress-value,
+.password-strength__bar.media::-moz-progress-bar {
+  background: var(--color-medium);
+}
+
+.password-strength__bar.forte::-webkit-progress-value,
+.password-strength__bar.forte::-moz-progress-bar {
+  background: var(--color-strong);
+}
+
+.password-strength__bar.muito-forte::-webkit-progress-value,
+.password-strength__bar.muito-forte::-moz-progress-bar {
+  background: var(--color-very-strong);
+}
+
+.password-strength__text {
+  min-height: 1.4em;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.feedback-message {
+  min-height: 1.5em;
+  margin: 0.9rem 0 0;
+  color: var(--color-strong);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.feedback-message:not(:empty) {
+  animation: feedback-enter 220ms ease-out both;
+}
+
+@keyframes feedback-enter {
+  from { opacity: 0; transform: translateY(0.25rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 7. Rodapé e foco acessível */
+.site-footer {
+  margin: 1.4rem auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.45rem;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer a {
+  color: var(--color-accent);
+  text-underline-offset: 0.2em;
+}
+
+:where(a, button, input):focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* 8. Ajustes para telas maiores e movimento reduzido */
+@media (min-width: 480px) {
+  body {
+    justify-content: center;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .character-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
