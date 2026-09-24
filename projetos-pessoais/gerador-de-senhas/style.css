@@ -385,6 +385,14 @@ body {
   animation: feedback-enter 220ms ease-out both;
 }
 
+.feedback-message.feedback-message--visible {
+  animation: feedback-enter 220ms ease-out both;
+}
+
+.feedback-message.feedback-message--error {
+  color: var(--color-weak);
+}
+
 @keyframes feedback-enter {
   from { opacity: 0; transform: translateY(0.25rem); }
   to { opacity: 1; transform: translateY(0); }
