@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gere senhas com tamanho e tipos de caracteres escolhidos por você.">
+    <title>Gerador de senhas</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>Gerador de senhas</h1>
+      <p>Crie uma senha de acordo com o tamanho e os tipos de caracteres que preferir.</p>
+    </header>
+
+    <main class="password-generator">
+      <form class="generator-form" aria-labelledby="generator-title">
+        <h2 id="generator-title">Personalize sua senha</h2>
+
+        <div class="password-output">
+          <label for="generated-password">Senha gerada</label>
+          <div class="password-output__controls">
+            <input
+              class="password-output__field"
+              id="generated-password"
+              name="generated-password"
+              type="text"
+              placeholder="Sua senha aparecerá aqui"
+              readonly
+              aria-describedby="password-strength-text"
+              autocomplete="off"
+              spellcheck="false"
+            >
+            <button class="button button--secondary" id="copy-password" type="button" aria-label="Copiar senha gerada">
+              Copiar
+            </button>
+          </div>
+        </div>
+
+        <div class="password-length">
+          <label for="password-length">Tamanho da senha: <output id="password-length-value" for="password-length">16</output></label>
+          <input
+            id="password-length"
+            name="password-length"
+            type="range"
+            min="4"
+            max="64"
+            value="16"
+            aria-valuemin="4"
+            aria-valuemax="64"
+            aria-valuenow="16"
+          >
+        </div>
+
+        <fieldset class="character-options">
+          <legend>Tipos de caracteres</legend>
+          <label class="character-options__item" for="include-uppercase">
+            <input id="include-uppercase" name="character-types" type="checkbox" value="uppercase" checked>
+            Letras maiúsculas (A–Z)
+          </label>
+          <label class="character-options__item" for="include-lowercase">
+            <input id="include-lowercase" name="character-types" type="checkbox" value="lowercase" checked>
+            Letras minúsculas (a–z)
+          </label>
+          <label class="character-options__item" for="include-numbers">
+            <input id="include-numbers" name="character-types" type="checkbox" value="numbers" checked>
+            Números (0–9)
+          </label>
+          <label class="character-options__item" for="include-symbols">
+            <input id="include-symbols" name="character-types" type="checkbox" value="symbols" checked>
+            Símbolos (!@#$...)
+          </label>
+        </fieldset>
+
+        <button class="button button--primary" id="generate-password" type="button">
+          Gerar senha
+        </button>
+
+        <section class="password-strength" aria-labelledby="password-strength-heading">
+          <h2 id="password-strength-heading">Força da senha</h2>
+          <progress
+            class="password-strength__bar"
+            id="password-strength-bar"
+            value="0"
+            max="100"
+            aria-label="Força da senha"
+            aria-describedby="password-strength-text"
+          >
+            0%
+          </progress>
+          <p class="password-strength__text" id="password-strength-text" aria-live="polite">Ainda não há uma senha para avaliar.</p>
+        </section>
+      </form>
+
+      <p class="feedback-message" id="feedback-message" role="status" aria-live="polite" aria-atomic="true"></p>
+    </main>
+
+    <footer class="site-footer">
+      <p>Desenvolvido por [SEU NOME].</p>
+      <a href="https://github.com/arthur-morelo" target="_blank" rel="noopener noreferrer" aria-label="Visite meu perfil no GitHub (abre em nova aba)">
+        Meu GitHub
+      </a>
+    </footer>
+  </body>
+</html>
